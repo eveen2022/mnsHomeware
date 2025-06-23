@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.pdf-page {
+  width: 29.7cm;
+  height: 21cm;
+  padding: 1.35cm;
+  box-sizing: border-box;
+  background: white;
+  page-break-after: avoid;
+}
+
+.pdf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 7cm);
+  grid-template-rows: repeat(5, 3.5cm);
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#label-preview-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.preview-page {
+  width: 29.7cm;
+  height: 21cm;
+  padding: 1.35cm;
+  box-sizing: border-box;
+  background: white;
+  border: 1px dashed #ccc;
+  display: grid;
+  grid-template-columns: repeat(4, 7cm);
+  grid-template-rows: repeat(5, 3.5cm);
+  gap: 0;
+}
+
+.label {
+  width: 7cm;
+  height: 3.5cm;
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.label::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('lable\ logo.png') center center no-repeat;
+  background-size: 85%;
+  opacity: 0.06;
+  z-index: 0;
+}
+
+.label * {
+  position: relative;
+  z-index: 1;
+}
+
+.label .product-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  line-height: 1.1;
+  text-align: center;
+  padding: 0 5px;
+}
+
+.label .svg-line {
+  margin: 6px auto;
+  width: 160px;
+  height: 14px;
+}
+
+.label .price {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+
+

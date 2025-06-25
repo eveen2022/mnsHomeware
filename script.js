@@ -167,10 +167,27 @@ function generatePDF() {
 
 
 function clearData() {
+    // 1. Clear local array and localStorage
     allProducts.length = 0;
     localStorage.removeItem('shelfProducts');
+    
+    // 2. Clear inputs
+    document.getElementById('product-name').value = '';
+    document.getElementById('product-price').value = '';
+    document.getElementById('pdfName').value = '';
+    document.getElementById('excel-file').value = null;
+
+    // 3. Clear cookies
+    document.cookie.split(";").forEach(cookie => {
+        document.cookie = cookie
+            .replace(/^ +/, "")
+            .replace(/=.*/, "=;expires=" + new Date(0).toUTCString() + ";path=/");
+    });
+
+    // 4. Clear UI
     renderLabels();
 }
+
 
 window.onload = () => {
     const saved = localStorage.getItem('shelfProducts');

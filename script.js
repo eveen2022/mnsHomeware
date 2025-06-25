@@ -58,8 +58,14 @@ function renderLabels() {
 function generatePDF() {
     const pdfName = document.getElementById("pdfName").value.trim();
 
+    // Remove old container if exists
+    const existingPDFContainer = document.getElementById('pdfContainer');
+    if (existingPDFContainer) {
+        existingPDFContainer.remove();
+    }
+
     if (allProducts.length > LABEL_LIMIT) {
-        alert(`⚠️ You can only generate PDFs for up to ${LABEL_LIMIT} labels. Reduce the product amount to 150 or less to download the PDF.`);
+        alert(`⚠️ You can only generate PDFs for up to ${LABEL_LIMIT} labels.`);
         return;
     }
 
@@ -67,7 +73,6 @@ function generatePDF() {
         alert("⚠️ Cannot generate PDF. No products have been added.");
         return;
     }
-
 
     if (!pdfName) {
         alert("Please enter a name for the PDF file before downloading.");
@@ -86,6 +91,8 @@ function generatePDF() {
     pdfContainer.style.background = '#fff';
     pdfContainer.style.padding = '0';
     pdfContainer.style.margin = '0';
+    pdfContainer.style.width = '100%';
+    pdfContainer.style.overflow = 'hidden';
     document.body.appendChild(pdfContainer);
 
     chunked.forEach((batch) => {
@@ -99,10 +106,10 @@ function generatePDF() {
             const label = document.createElement('div');
             label.className = 'label';
             label.innerHTML = `
-        <div class="product-name">${name.toUpperCase()}</div>
-        <img src="divider.svg" class="svg-line" alt="divider">
-        <div class="price">Rs. ${parseFloat(price).toFixed(2)}</div>
-      `;
+                <div class="product-name">${name.toUpperCase()}</div>
+                <img src="divider.svg" class="svg-line" alt="divider">
+                <div class="price">Rs. ${parseFloat(price).toFixed(2)}</div>
+            `;
             grid.appendChild(label);
         });
 
@@ -110,6 +117,7 @@ function generatePDF() {
         pdfContainer.appendChild(page);
     });
 
+    // Wait for DOM to render properly
     setTimeout(() => {
         html2pdf().set({
             margin: 0,
@@ -119,26 +127,24 @@ function generatePDF() {
             html2canvas: { scale: 1.5, useCORS: true },
             jsPDF: { unit: 'cm', format: 'a4', orientation: 'landscape' }
         }).from(pdfContainer).save().then(() => {
-            // Complete progress visually
+            pdfContainer.remove();
+
             progressBar.style.width = "100%";
             progressBar.textContent = "100%";
 
-            // Hide progress bar after 1 second
             setTimeout(() => {
                 progressWrapper.style.display = "none";
                 progressBar.style.width = "0%";
                 progressBar.textContent = "0%";
             }, 1000);
-            pdfContainer.remove();
         });
-    }, 800);
+    }, 200); // DOM reflow delay
 
     const progressWrapper = document.getElementById("pdf-progress-wrapper");
     const progressBar = document.getElementById("pdf-progress-bar");
 
-    // Estimate total time based on label count
     const labelCount = allProducts.length;
-    const estimatedTimeMs = Math.max(3000, labelCount * 30); // 30ms per label minimum
+    const estimatedTimeMs = Math.max(3000, labelCount * 30);
     let progress = 0;
     let startTime = Date.now();
 
@@ -157,8 +163,8 @@ function generatePDF() {
         }
     };
     requestAnimationFrame(updateProgress);
-
 }
+
 
 function clearData() {
     allProducts.length = 0;

@@ -1,12 +1,77 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #f6f8fa;
+  color: #333;
+}
+
+.card {
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+h2, h5 {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+input.form-control {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 10px 14px;
+  font-size: 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+input.form-control:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+}
+
+.btn {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 18px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #4a90e2;
+  border-color: #4a90e2;
+}
+
+.btn-primary:hover {
+  background: #357ABD;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+}
+
+#pdfName {
+  text-align: center;
+}
+
+.progress {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
 .pdf-page {
-  width: 29.7cm;
-  height: 21cm;
+  margin: 0;
   padding: 1.35cm;
+  page-break-after: always;
   box-sizing: border-box;
   background: white;
+}
+
+.pdf-page:last-child {
   page-break-after: avoid;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .pdf-grid {
@@ -25,6 +90,7 @@
   flex-direction: column;
   gap: 30px;
   align-items: center;
+  padding: 20px;
 }
 
 .preview-page {
@@ -60,7 +126,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url('lable\ logo.png') center center no-repeat;
+  background: url('mnsLogoIcon.svg') center center no-repeat;
   background-size: 85%;
   opacity: 0.06;
   z-index: 0;
@@ -95,5 +161,23 @@
   font-weight: 700;
 }
 
+.navbar {
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-brand {
+  font-size: 1.25rem;
+  color: #333 !important;
+}
+
+.nav-link {
+  font-size: 1rem;
+  color: #555 !important;
+}
+
+.dropdown-menu {
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
 
 

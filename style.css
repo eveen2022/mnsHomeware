@@ -109,7 +109,7 @@ input.form-control:focus {
 .label {
   width: 7cm;
   height: 3.5cm;
-  border: 1px solid black;
+  border: 2.5px solid black;
   box-sizing: border-box;
   padding: 10px;
   text-align: center;

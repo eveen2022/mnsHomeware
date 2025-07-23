@@ -10,6 +10,7 @@ body {
   border: none !important;
   border-radius: 12px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  padding-top: 70px;
 }
 
 h2, h5 {
@@ -66,6 +67,7 @@ input.form-control:focus {
   page-break-after: always;
   box-sizing: border-box;
   background: white;
+  padding: 1cm; /* reduced from 1.35cm */
 }
 
 .pdf-page:last-child {
@@ -78,6 +80,7 @@ input.form-control:focus {
   display: grid;
   grid-template-columns: repeat(4, 7cm);
   grid-template-rows: repeat(5, 3.5cm);
+  padding-bottom: 1cm;
   gap: 0;
   justify-content: center;
   align-items: center;
@@ -160,24 +163,4 @@ input.form-control:focus {
   font-size: 35px;
   font-weight: 700;
 }
-
-.navbar {
-  border-bottom: 1px solid #eee;
-}
-
-.navbar-brand {
-  font-size: 1.25rem;
-  color: #333 !important;
-}
-
-.nav-link {
-  font-size: 1rem;
-  color: #555 !important;
-}
-
-.dropdown-menu {
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-}
-
 

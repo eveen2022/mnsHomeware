@@ -20,6 +20,8 @@ form.addEventListener('submit', function (e) {
     form.reset();
 });
 
+
+
 document.getElementById('excel-file').addEventListener('change', function (e) {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -167,10 +169,18 @@ function generatePDF() {
 
 
 function clearData() {
+
+    // Reset upload dropzone visual
+    const zone = document.getElementById("upload-zone-text");
+    zone.innerHTML = `
+  <i class="bi bi-cloud-upload fs-2 text-secondary d-block mb-2"></i>
+  <span class="text-secondary fw-semibold">Click or drag your Excel file here</span>
+`;
+
     // 1. Clear local array and localStorage
     allProducts.length = 0;
     localStorage.removeItem('shelfProducts');
-    
+
     // 2. Clear inputs
     document.getElementById('product-name').value = '';
     document.getElementById('product-price').value = '';

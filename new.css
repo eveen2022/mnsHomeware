@@ -142,7 +142,7 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 0.4rem 0.5rem;
-  min-height: 85px; /* 📏 Most compact */
+  min-height: 80px; /* 📏 Most compact */
   transition: all 0.2s ease;
 }
 
